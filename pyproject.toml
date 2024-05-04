@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "djangokw"
+version = "0.1.0"
+description = ""
+authors = ["max"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "4.2"
+ipython = "^8.24.0"
+psycopg2 = "^2.9.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
