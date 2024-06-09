@@ -8,17 +8,17 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Удаление</h4>
+                        <h4 class="my-0 font-weight-normal">
+                            Войти
+                        </h4>
                     </div>
                     <div class="card-body">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data" class="form-floating">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-lg btn-outline-danger">
-                                Удалить {{object.name }} ?
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-lg btn-block btn-outline-primary">
+                                Отправить
                             </button>
-                            <a type="submit" class="btn btn-lg btn-outline-primary"
-                               href="{% url 'client:home' %}">Отмена
-                            </a>
                         </form>
                     </div>
                 </div>

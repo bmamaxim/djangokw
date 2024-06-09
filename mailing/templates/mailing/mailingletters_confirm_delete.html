@@ -11,13 +11,14 @@
                         <h4 class="my-0 font-weight-normal">Удаление</h4>
                     </div>
                     <div class="card-body">
+                        {{object.body }}
                         <form method="post">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-lg btn-outline-danger">
-                                Удалить {{object.name }} ?
+                                Удалить?
                             </button>
                             <a type="submit" class="btn btn-lg btn-outline-primary"
-                               href="{% url 'client:home' %}">Отмена
+                               href="{% url 'mailing:mailings' %}">Отмена
                             </a>
                         </form>
                     </div>
