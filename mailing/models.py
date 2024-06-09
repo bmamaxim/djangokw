@@ -26,12 +26,12 @@ class MailingLetters(models.Model):
         (STATUS_DONE, 'Завершена')
     )
 
-    start = models.DateTimeField(verbose_name='начало рассылки')
-    end = models.DateTimeField(verbose_name='начало рассылки', **NULLABLE)
+    start = models.DateTimeField(auto_now_add=True, verbose_name='начало рассылки')
+    end = models.DateTimeField(verbose_name='конец рассылки', **NULLABLE)
     period = models.CharField(max_length=50, choices=PERIODS, default=PERIOD_DAILY, verbose_name='период')
     status = models.CharField(max_length=50, choices=STATUSES, default=STATUS_STARTED, verbose_name='статус')
     message = models.ForeignKey(Letter, on_delete=models.CASCADE, verbose_name='сообщение', **NULLABLE)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE)
     clients = models.ManyToManyField(Client, related_name='settings')
 
     def __str__(self):

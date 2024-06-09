@@ -13,7 +13,7 @@ class Client(models.Model):
     created_at = models.DateField(auto_now_add=True, verbose_name='дата записи', **NULLABLE)
     updated_at = models.DateField(auto_now_add=True, verbose_name='последние изменения', **NULLABLE)
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None, **NULLABLE)
 
     def __str__(self):
         return (f'{self.email}'

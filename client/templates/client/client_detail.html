@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block content %}
 <div class="container">
@@ -9,10 +9,11 @@
                     <h1 class="card-title pricing-card-title">{{ object.name }}</h1>
 
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- {{ object.email }}</li>
-                        <li>- {{ object.comment }}</li>
-                        <li>- {{ object.created_at }}</li>
-                        <li>- {{ object.updated_at }}</li>
+                        <li>-mail:    {{ object.email }}</li>
+                        <li>-comment: {{ object.comment }}</li>
+                        <li>-created: {{ object.created_at }}</li>
+                        <li>-update:  {{ object.updated_at }}</li>
+
                     </ul>
                     <div class="btn-group">
 
@@ -28,7 +29,7 @@
 
                     </div>
                     <div class="card-footer">
-
+                        <li>owner: {{ object.owner }}</li>
                     </div>
                 </div>
             </div>

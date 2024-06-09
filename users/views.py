@@ -11,7 +11,6 @@ from users.models import User
 
 
 class RegisterView(CreateView):
-
     model = User
     form_class = UseerRegisterForm
     template_name = 'users/register.html'
@@ -32,9 +31,11 @@ class RegisterView(CreateView):
         )
         return super().form_valid(form)
 
+
 class Verify(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, 'users/verification.html')
+
     def post(self, request, *args, **kwargs):
         code = request.POST.get('ver_code')
         user = get_object_or_404(User, ver_code=code)
@@ -45,6 +46,7 @@ class Verify(TemplateView):
             return redirect('users:login')
         return redirect('/')
 
+
 class ProfileView(UpdateView):
     model = User
     form_class = UserProfileForm
@@ -52,6 +54,7 @@ class ProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
 
 class RestoreView(TemplateView):
     def get(self, request, *args, **kwargs):

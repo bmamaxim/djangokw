@@ -1,6 +1,6 @@
 from django.db import models
 
-from client.models import Client
+from client.models import Client, NULLABLE
 from mailing.models import MailingLetters
 
 

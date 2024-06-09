@@ -5,7 +5,6 @@ from client.models import NULLABLE
 
 
 class User(AbstractUser):
-
     username = None
     email = models.EmailField(unique=True, verbose_name='элктронная почта')
     ver_code = models.CharField(max_length=4, verbose_name='код верификации', **NULLABLE)
@@ -20,6 +19,12 @@ class User(AbstractUser):
         return f'{self.email}'
 
     class Meta:
-
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
+
+        permissions = (
+            (
+                'cancel',
+                'отмена публикации'
+            ),
+        )

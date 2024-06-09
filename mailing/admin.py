@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-admin.site.register()
+from letter.models import Letter
+
+admin.site.register(Letter)
