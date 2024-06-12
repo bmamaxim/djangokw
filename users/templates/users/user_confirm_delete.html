@@ -8,18 +8,18 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">
-                            Вы
-                        </h4>
+                        <h4 class="my-0 font-weight-normal">Удаление</h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" enctype="multipart/form-data" class="form-floating">
+                        {{object.body }}
+                        <form method="post">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-lg btn-block btn-outline-primary">
-                                Внести изменения
+                            <button type="submit" class="btn btn-lg btn-outline-danger">
+                                Удалить?
                             </button>
-                            <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'users:recovery' %}">Сменить пароль</a>
+                            <a type="submit" class="btn btn-lg btn-outline-primary"
+                               href="{% url 'users:list' %}">Отмена
+                            </a>
                         </form>
                     </div>
                 </div>

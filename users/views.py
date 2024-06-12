@@ -1,18 +1,20 @@
 import random
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView, UpdateView
+from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DetailView, DeleteView
 
 from config import settings
-from users.forms import UseerRegisterForm, UserProfileForm
+from users.forms import UserRegisterForm, UserProfileForm, UserModeratorForm
 from users.models import User
 
 
 class RegisterView(CreateView):
+
     model = User
-    form_class = UseerRegisterForm
+    form_class = UserRegisterForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:verify')
 
@@ -48,6 +50,7 @@ class Verify(TemplateView):
 
 
 class ProfileView(UpdateView):
+
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
@@ -73,3 +76,29 @@ class RestoreView(TemplateView):
         user.set_password(restore_pass)
         user.save()
         return redirect('users:login')
+
+
+class UserListView(ListView):
+
+    model = User
+    template_name = 'users/users.html'
+
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+
+    model = User
+    template_name = 'users/detail.html'
+
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+
+    model = User
+    form_class = UserModeratorForm
+
+
+
+
+class UserDeleteView(UserPassesTestMixin, DeleteView):
+
+    model = User
+    success_url = reverse_lazy('users:list')

@@ -1,10 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
+from django.forms import ModelForm
 
 from users.models import User
 
 
-class UseerRegisterForm(UserCreationForm):
+class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
@@ -22,3 +23,8 @@ class UserProfileForm(UserChangeForm):
 
         self.fields['password'].widget = forms.HiddenInput()
 
+class UserModeratorForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('user_activ',)

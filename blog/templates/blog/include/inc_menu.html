@@ -3,7 +3,7 @@
             <a class="p-2 btn btn-outline-primary" href="{% url 'client:clients' %}">Клиенты</a>
             <a class="p-2 btn btn-outline-primary" href="{% url 'client:create' %}">Добавить клиента</a>
             <a class="p-2 btn btn-outline-primary" href="{% url 'letter:create_letter' %}">Письмо</a>
-
+            <a class="p-2 btn btn-outline-primary" href="{% url 'users:list' %}">Пользователи</a>
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a>
         {% else %}

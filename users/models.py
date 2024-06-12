@@ -24,7 +24,7 @@ class User(AbstractUser):
 
         permissions = (
             (
-                'cancel',
-                'отмена публикации'
+                'ban',
+                'Блокировка пользователя'
             ),
         )

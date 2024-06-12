@@ -7,9 +7,8 @@ from mailing.models import MailingLetters
 
 class MailingLettersForm(forms.ModelForm):
     """
-    форма рассылки
+    Форма рассылки.
     """
-
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['clients'].queryset = Client.objects.filter(owner=user)
@@ -19,3 +18,12 @@ class MailingLettersForm(forms.ModelForm):
 
         model = MailingLetters
         exclude = ('owner',)
+
+
+class ModeratorFormMailing(forms.ModelForm):
+    """
+    Форма для модератора
+    """
+    class Meta:
+        model = MailingLetters
+        fields = ('status',)

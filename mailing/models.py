@@ -32,7 +32,7 @@ class MailingLetters(models.Model):
     status = models.CharField(max_length=50, choices=STATUSES, default=STATUS_STARTED, verbose_name='статус')
     message = models.ForeignKey(Letter, on_delete=models.CASCADE, verbose_name='сообщение', **NULLABLE)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE)
-    clients = models.ManyToManyField(Client, related_name='settings')
+    clients = models.ManyToManyField(Client, related_name='settings', **NULLABLE)
 
     def __str__(self):
         return (f"{self.start} "
@@ -43,3 +43,10 @@ class MailingLetters(models.Model):
 
         verbose_name = 'рассылка'
         verbose_name_plural = 'рассылки'
+
+        permissions = (
+            (
+                'status',
+                'изменение статуса'
+            ),
+        )
