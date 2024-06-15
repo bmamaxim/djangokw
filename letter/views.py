@@ -34,6 +34,10 @@ class LetterListView(LoginRequiredMixin, ListView):
     model = Letter
     template_name = 'letter/letters.html'
 
+    def get_queryset(self):
+        return Letter.objects.filter(writer=self.request.user)
+
+
 class LetterDetailView(UserPassesTestMixin, DetailView):
     """
     Просмотр письма
@@ -45,16 +49,6 @@ class LetterDetailView(UserPassesTestMixin, DetailView):
             return True
         return self.handle_no_permission()
 
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['formset'] = MailingLetters.objects.all()
-        #if not self.request.user.groups.filter(name='moderator'):
-        #VersionFormset = inlineformset_factory(Letter, MailingLetters, form=MailingLettersForm, extra=1)
-        #if self.request.method == 'POST':
-            #context_data['formset'] = VersionFormset(self.request.POST, instance=self.object)
-        #else:
-            #context_data['formset'] = VersionFormset(instance=self.object)
-        return context_data
 
 class LetterUpdateView(UserPassesTestMixin, UpdateView):
     """
@@ -68,11 +62,6 @@ class LetterUpdateView(UserPassesTestMixin, UpdateView):
         if self.get_object().writer == self.request.user:
             return True
         return self.handle_no_permission()
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        context_data['formset'] = MailingLetters.objects.all()
-        return context_data
 
     def form_valid(self, form):
         self.object = form.save()

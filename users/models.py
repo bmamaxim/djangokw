@@ -24,7 +24,7 @@ class User(AbstractUser):
 
         permissions = (
             (
-                'ban',
+                'user_activ',
                 'Блокировка пользователя'
             ),
         )

@@ -9,6 +9,7 @@ class MailingLettersForm(forms.ModelForm):
     """
     Форма рассылки.
     """
+
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
@@ -17,15 +18,5 @@ class MailingLettersForm(forms.ModelForm):
             self.fields['message'].queryset = Letter.objects.filter(writer=user)
 
     class Meta:
-
         model = MailingLetters
         exclude = ('owner',)
-
-
-class ModeratorFormMailing(forms.ModelForm):
-    """
-    Форма для модератора
-    """
-    class Meta:
-        model = MailingLetters
-        fields = ('status',)

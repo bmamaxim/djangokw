@@ -6,14 +6,16 @@
         <div class="col-6">
             <div class="card mb-4 box-shadow">
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">{{ object.writer }}</h1>
+                    <h1 class="card-title pricing-card-title">{{ object.owner }}</h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- {{ object }}</li>
+                        <li>- {{ object.title }}</li>
+                        <li>- {{ object.content }}</li>
+                        <li>- {{ object.number_of_views }}</li>
                     </ul>
                     <div class="btn-group">
-                        <a href="{% url 'letter:update' object.pk %}"
+                        <a href="{% url 'blog:update' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-primary">Править</a>
-                        <a href="{% url 'letter:delete' object.pk %}"
+                        <a href="{% url 'blog:delete' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
                     </div>
                     <div class="card-footer">
@@ -21,7 +23,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 {% endblock %}

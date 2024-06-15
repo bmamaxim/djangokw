@@ -34,6 +34,11 @@ class ClientDetailView(UserPassesTestMixin, DetailView):
     model = Client
     template_name = 'client/client_detail.html'
 
+    def test_func(self):
+        if self.get_object().owner == self.request.user:
+            return True
+        return self.handle_no_permission()
+
 
 class ClientUpdateView(UserPassesTestMixin, UpdateView):
 
@@ -41,8 +46,18 @@ class ClientUpdateView(UserPassesTestMixin, UpdateView):
     form_class = ClientForm
     success_url = reverse_lazy('client:clients')
 
+    def test_func(self):
+        if self.get_object().owner == self.request.user:
+            return True
+        return self.handle_no_permission()
+
 
 class ClientDeleteView(UserPassesTestMixin, DeleteView):
 
     model = Client
     success_url = reverse_lazy('client:clients')
+
+    def test_func(self):
+        if self.get_object().owner == self.request.user:
+            return True
+        return self.handle_no_permission()

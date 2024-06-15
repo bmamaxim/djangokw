@@ -1,13 +1,14 @@
 import random
 
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DetailView, DeleteView
 
 from config import settings
-from users.forms import UserRegisterForm, UserProfileForm, UserModeratorForm
+from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
 
@@ -90,15 +91,19 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     template_name = 'users/detail.html'
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
-
-    model = User
-    form_class = UserModeratorForm
-
-
-
-
 class UserDeleteView(UserPassesTestMixin, DeleteView):
 
     model = User
     success_url = reverse_lazy('users:list')
+
+
+@login_required
+@permission_required('users.user_activ')
+def toggle_activity(reqwest, pk):
+    user = get_object_or_404(User, pk=pk)
+    if user.is_active:
+        user.is_active = False
+    else:
+        user.is_active = True
+    user.save()
+    return redirect(reverse('users:list'))
