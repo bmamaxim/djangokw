@@ -25,6 +25,5 @@ urlpatterns = [
     path('client/', include('client.urls', namespace='client')),
     path('users/', include('users.urls', namespace='users')),
     path('letter/', include('letter.urls', namespace='letter')),
-    # path('logmail/', include('logmail.urls', namespace='logmail')),
     path('mailing/', include('mailing.urls', namespace='mailing'))
 ]

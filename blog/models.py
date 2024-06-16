@@ -6,7 +6,7 @@ from config import settings
 
 class Blog(models.Model):
     title = models.CharField(max_length=200, verbose_name='заголовок')
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='писатель')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='писатель', **NULLABLE)
     content = models.TextField(verbose_name='содержание', **NULLABLE)
     preview = models.ImageField(upload_to='image/', verbose_name='изображение', **NULLABLE)
     created_at = models.DateField(auto_now_add=True, verbose_name='дата публикации', **NULLABLE)

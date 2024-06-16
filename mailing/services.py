@@ -9,8 +9,8 @@ from mailing.models import MailingLetters
 
 def _send_mail(message_settings, message_client):
     result = send_mail(
-        subject=message_settings.messege.subject,
-        message=message_settings.messege.messege,
+        subject=message_settings.message.subject,
+        message=message_settings.message.body,
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[message_client.email],
         fail_silently=False
@@ -27,7 +27,7 @@ def send_mails():
     datetime_now = datetime.datetime.now(datetime.timezone.utc)
     for mailing_letters in MailingLetters.objects.filter(status=MailingLetters.STATUS_STARTED):
         if (datetime_now > mailing_letters.start) and (datetime_now < mailing_letters.end):
-            for mailing_client in mailing_letters.clients.all:
+            for mailing_client in mailing_letters.clients.all():
                 mailing_log = LogMail.objects.filter(client=mailing_client.pk,
                                                      settings=mailing_letters)
                 if mailing_log.exists():

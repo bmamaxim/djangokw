@@ -3,21 +3,42 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-5">
             <div class="card mb-4 box-shadow">
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">{{ object.owner }}</h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- {{ object }}</li>
+                        <li>- {{ object.start }}</li>
+                        <li>- {{ object.status }}</li>
                     </ul>
                     <div class="btn-group">
+                        {% if perms.mailing.change_mailingletters %}
                         <a href="{% url 'mailing:update' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-primary">Править</a>
+                        {% endif %}
+                        {% if perms.mailing.delete_mailingletters %}
                         <a href="{% url 'mailing:delete' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                        {% endif %}
+                        {% if perms.mailing.status %}
+                        <a href="{% url 'mailing:status' object.pk %}"
+                           class="btn btn-lg btn-block btn-outline-primary">Статус</a>
+                        {% endif %}
                     </div>
                     <div class="card-footer">
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{ title }}</h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        Всего рассылок: {{ mailings_all }}
+                        Всего активных рассылок: {{ mailings_started }}
+                        Количество уникальных клиентов: {{ mailings_clients }}
+                    </ul>
                 </div>
             </div>
         </div>

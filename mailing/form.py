@@ -7,15 +7,16 @@ from mailing.models import MailingLetters
 
 class MailingLettersForm(forms.ModelForm):
     """
-    форма рассылки
+    Форма рассылки.
     """
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-        self.fields['clients'].queryset = Client.objects.filter(owner=user)
-        self.fields['message'].queryset = Letter.objects.filter(writer=user)
+        if user:
+            self.fields['clients'].queryset = Client.objects.filter(owner=user)
+            self.fields['message'].queryset = Letter.objects.filter(writer=user)
 
     class Meta:
-
         model = MailingLetters
         exclude = ('owner',)

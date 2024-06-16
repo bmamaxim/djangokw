@@ -4,7 +4,6 @@ from client.models import NULLABLE
 from config import settings
 
 
-
 class Letter(models.Model):
 
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='писатель', **NULLABLE)
