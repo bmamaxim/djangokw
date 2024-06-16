@@ -1,0 +1,41 @@
+[
+  {
+    "model": "client.client",
+    "pk": 1,
+    "fields": {
+      "email": "Seydihanov@yandex.ru",
+      "name": "сьр",
+      "comment": "ЄЁє",
+      "publication_sign": true,
+      "created_at": "2024-05-12",
+      "updated_at": "2024-05-12",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 3,
+    "fields": {
+      "email": "maaaxon4ik@mail.ru",
+      "name": "Klim Klimov",
+      "comment": "ov",
+      "publication_sign": true,
+      "created_at": "2024-06-09",
+      "updated_at": "2024-06-09",
+      "owner": 4
+    }
+  },
+  {
+    "model": "client.client",
+    "pk": 4,
+    "fields": {
+      "email": "q@q.ru",
+      "name": "q",
+      "comment": "q",
+      "publication_sign": true,
+      "created_at": "2024-06-14",
+      "updated_at": "2024-06-14",
+      "owner": 5
+    }
+  }
+]
