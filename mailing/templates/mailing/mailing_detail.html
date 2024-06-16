@@ -12,10 +12,14 @@
                         <li>- {{ object.status }}</li>
                     </ul>
                     <div class="btn-group">
+                        {% if perms.mailing.change_mailingletters %}
                         <a href="{% url 'mailing:update' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-primary">Править</a>
+                        {% endif %}
+                        {% if perms.mailing.delete_mailingletters %}
                         <a href="{% url 'mailing:delete' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                        {% endif %}
                         {% if perms.mailing.status %}
                         <a href="{% url 'mailing:status' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-primary">Статус</a>

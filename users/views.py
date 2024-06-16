@@ -61,6 +61,7 @@ class ProfileView(UpdateView):
 
 
 class RestoreView(TemplateView):
+
     def get(self, request, *args, **kwargs):
         return render(request, 'users/recovery_pass.html')
 
@@ -100,6 +101,13 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
 @login_required
 @permission_required('users.user_activ')
 def toggle_activity(reqwest, pk):
+    """
+    Функция меняет статус пользователя
+    активен/не активен
+    :param reqwest:
+    :param pk:
+    :return:
+    """
     user = get_object_or_404(User, pk=pk)
     if user.is_active:
         user.is_active = False

@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
@@ -34,10 +33,13 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
+        # blog = Blog.objects.all()
+        # print(blog[:3])
+        # context_data['massage'] = blog[:3]
         context_data['title'] = 'Информация по рассылкам'
         context_data['mailings_all'] = len(LogMail.objects.all())
         context_data['mailings_started'] = len(MailingLetters.objects.filter(status='started'))
-        context_data['mailings_clients'] = len(Client.objects.all())
+        context_data['mailings_clients'] = len(set(Client.objects.all()))
         return context_data
 
 

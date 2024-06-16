@@ -1,13 +1,10 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.core.exceptions import PermissionDenied
-from django.forms import inlineformset_factory
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from client.models import Client
-from logmail.form import LogMailForm
 from logmail.models import LogMail
 from mailing.form import MailingLettersForm
 from mailing.models import MailingLetters
@@ -39,7 +36,6 @@ class MailingLettersListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         if self.request.user.groups.filter(name="moderator"):
-            print(self.request.user.groups)
             return MailingLetters.objects.all()
         return MailingLetters.objects.filter(owner=self.request.user)
 
@@ -57,9 +53,6 @@ class MailingLettersDetailView(LoginRequiredMixin, DetailView):
     model = MailingLetters
     template_name = 'mailing/mailing_detail.html'
     login_url = 'users:login'
-
-    def get_queryset(self):
-        return MailingLetters.objects.filter(owner=self.request.user)
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -82,7 +75,6 @@ class MailingLettersUpdateView(UserPassesTestMixin, FromValidMixin, UpdateView):
         return self.handle_no_permission()
 
 
-
 class MailingLettersDeleteView(UserPassesTestMixin, DeleteView):
 
     model = MailingLetters
@@ -97,6 +89,12 @@ class MailingLettersDeleteView(UserPassesTestMixin, DeleteView):
 @login_required
 @permission_required('mailing.status')
 def mailing_status(reqwest, pk):
+    """
+    Функция меняет парамерт статуса рассылки
+    :param reqwest:
+    :param pk:
+    :return:
+    """
     mailing = get_object_or_404(MailingLetters, pk=pk)
     if mailing.status:
         mailing.status = 'done'

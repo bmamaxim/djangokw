@@ -1,13 +1,9 @@
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.forms import inlineformset_factory
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from letter.form import LettersForm
 from letter.models import Letter
-from mailing.form import MailingLettersForm
-from mailing.models import MailingLetters
 
 
 class LetterCreateView(LoginRequiredMixin, CreateView):

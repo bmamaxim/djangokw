@@ -13,10 +13,14 @@
                         <li>- {{ object.number_of_views }}</li>
                     </ul>
                     <div class="btn-group">
+                        {% if perms.users.update_blog %}
                         <a href="{% url 'blog:update' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-primary">Править</a>
+                        {% endif %}
+                        {% if perms.users.delete_blog %}
                         <a href="{% url 'blog:delete' object.pk %}"
                            class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                        {% endif %}
                     </div>
                     <div class="card-footer">
                     </div>
