@@ -1,0 +1,90 @@
+[
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$4k9BhVAJ30spDiWRnUNcvd$wzm9CXmSWR7GWWSXElOQR/9kiYaABqhy/6hlkMtlDtk=",
+      "last_login": "2024-06-16T06:27:28.757Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-12T16:03:45Z",
+      "email": "baranovm7@gmail.com",
+      "ver_code": "7784",
+      "user_activ": true,
+      "created_at": "2024-05-12",
+      "updated_at": "2024-05-12",
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$t3cjw6q0pDPXPhpKAQtslK$fNbUIbtGC54q2/qHtaRkJ3llfTrYX7nVZniVZ6hYFgY=",
+      "last_login": "2024-06-16T06:12:03.315Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-06-02T09:42:14Z",
+      "email": "moxabaranov@yandex.ru",
+      "ver_code": "6953",
+      "user_activ": true,
+      "created_at": "2024-06-02",
+      "updated_at": "2024-06-02",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$SPcAe1Mk3knUCbPuX9zcl4$3ynk1hg4HMgp5fEJkx7Xbv0kIrt6eEQ/Uey7M3+RI+k=",
+      "last_login": "2024-06-16T06:26:51.134Z",
+      "is_superuser": true,
+      "first_name": "admin",
+      "last_name": "test",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-06-04T14:37:03.475Z",
+      "email": "admin@mail.ru",
+      "ver_code": null,
+      "user_activ": true,
+      "created_at": "2024-06-04",
+      "updated_at": "2024-06-04",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$chqn9BkO9nWIuq2sDtf2qQ$BxgkSCeVaMQKWvnVXHgC854LNPvHkX2HYhKjAsILBAI=",
+      "last_login": "2024-06-12T12:44:10.099Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-06-09T18:00:55Z",
+      "email": "Seydihanov@yandex.ru",
+      "ver_code": "6551",
+      "user_activ": true,
+      "created_at": "2024-06-09",
+      "updated_at": "2024-06-09",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

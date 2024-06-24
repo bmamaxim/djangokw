@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4"></h1>
+    <p class="lead"></p>
+    <div class="container">
+        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'blog:create' %}">Написать Сообщеине</a>
+        <div class="row">
+            {% for object in object_list %}
+            <div class="col-8">
+                <div class="card mb-6 box-shadow mt-3">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ object.title }}</h1>
+                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            <li>- от - {{ object.owner }}</li>
+                        </ul>
+                        <a href="{% url 'blog:detail' object.pk %}" class=""
+                           style="--bs-btn-padding-y: 3.0rem; --bs-btn-padding-x: 5.0rem; --bs-btn-font-size: 1.0rem;">
+                            <h1 class="card-title pricing-card-title">{{ object.content }}</h1>
+                            <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            </ul>
+                        </a>
+                        <li>{{ object.created_at}}</li>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-3 col-md-6 col-sm-12">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ title }}</h1>
+                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            Всего рассылок: {{ mailings_all }}
+                            Всего активных рассылок: {{ mailings_started }}
+                            Количество уникальных клиентов: {{ mailings_clients }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

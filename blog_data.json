@@ -1,0 +1,54 @@
+[
+  {
+    "model": "blog.blog",
+    "pk": 3,
+    "fields": {
+      "title": "ьюх ёююс∙хэшх",
+      "owner": 4,
+      "content": "фюыцэю с√Є№ ьэюую сєъртръ!",
+      "preview": "",
+      "created_at": "2024-06-15",
+      "publication_sign": true,
+      "number_of_views": 19
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 4,
+    "fields": {
+      "title": "ёыхфє■∙хх",
+      "owner": 4,
+      "content": "х∙х ёююс∙хшэх",
+      "preview": "",
+      "created_at": "2024-06-16",
+      "publication_sign": true,
+      "number_of_views": 0
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 5,
+    "fields": {
+      "title": "х∙х 1",
+      "owner": 4,
+      "content": "¤Єю єцх 3",
+      "preview": "",
+      "created_at": "2024-06-16",
+      "publication_sign": true,
+      "number_of_views": 0
+    }
+  },
+  {
+    "model": "blog.blog",
+    "pk": 6,
+    "fields": {
+      "title": "4",
+      "owner": 4,
+      "content": "4",
+      "preview": "",
+      "created_at": "2024-06-16",
+      "publication_sign": true,
+      "number_of_views": 0
+    }
+  }
+]

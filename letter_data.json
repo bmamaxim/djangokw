@@ -1,0 +1,35 @@
+[
+  {
+    "model": "letter.letter",
+    "pk": 8,
+    "fields": {
+      "writer": 4,
+      "subject": "test",
+      "body": "test",
+      "created_at": "2024-06-09",
+      "updated_at": "2024-06-09"
+    }
+  },
+  {
+    "model": "letter.letter",
+    "pk": 12,
+    "fields": {
+      "writer": 4,
+      "subject": "satrsbn",
+      "body": "sjnjsryn",
+      "created_at": "2024-06-09",
+      "updated_at": "2024-06-09"
+    }
+  },
+  {
+    "model": "letter.letter",
+    "pk": 16,
+    "fields": {
+      "writer": 5,
+      "subject": "щ",
+      "body": "щ",
+      "created_at": "2024-06-14",
+      "updated_at": "2024-06-14"
+    }
+  }
+]
